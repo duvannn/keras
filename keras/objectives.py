@@ -38,11 +38,18 @@ def binary_crossentropy(y_true, y_pred):
     bce = T.nnet.binary_crossentropy(y_pred, y_true)
     return bce
 
+def cosine_similarity(y_true,y_pred):
+        mod_y = T.sqrt(T.sum(T.sqr(y_true), 1))
+        mod_y_pred = T.sqrt(T.sum(T.sqr(y_pred), 1))
+        return (1 - T.sum(T.dot(y_true.flatten(), y_pred.flatten()))/(mod_y*mod_y_pred + epsilon)).mean()
+
+
 # aliases
 mse = MSE = mean_squared_error
 mae = MAE = mean_absolute_error
 mape = MAPE = mean_absolute_percentage_error
 msle = MSLE = mean_squared_logarithmic_error
+cosim = COSIM = cosine_similarity
 
 from .utils.generic_utils import get_from_module
 def get(identifier):
