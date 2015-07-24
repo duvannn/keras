@@ -119,6 +119,8 @@ class Merge(object):
         '''
         if len(layers) < 2:
             raise Exception("Please specify two or more input layers (or containers) to merge")
+        if(len(layers)!=2 and mode=="dotproduct"):
+            raise Exception("Only to layers may be merged using the dot product")
         self.mode = mode
         self.layers = layers
         self.params = []
@@ -145,6 +147,8 @@ class Merge(object):
         elif self.mode == 'concat':
             inputs = [self.layers[i].get_output(train) for i in range(len(self.layers))]
             return T.concatenate(inputs, axis=-1)
+        elif self.mode == 'dotproduct':
+            return T.batched_dot(self.layers[0].get_output(train),self.layers[1].get_output(train))
         else:
             raise Exception('Unknown merge mode')
 
