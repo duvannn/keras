@@ -8,3 +8,13 @@ keras/datasets/data/*
 keras/datasets/temp/*
 docs/site/*
 docs/theme/*
+keras/models_BACKUP_12528.py
+keras/models_BASE_12528.py
+keras/models_LOCAL_12528.py
+keras/models_REMOTE_12528.py
+keras/objectives.py.orig
+Keras.egg-info/dependency_links.txt
+Keras.egg-info/PKG-INFO
+Keras.egg-info/requires.txt
+Keras.egg-info/SOURCES.txt
+Keras.egg-info/top_level.txt

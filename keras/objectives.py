@@ -33,16 +33,24 @@ def categorical_crossentropy(y_true, y_pred):
     cce = T.nnet.categorical_crossentropy(y_pred, y_true)
     return cce
 
+def sequence_vector(y_true, y_pred):
+    return T.neg(T.batched_dot(y_true,y_pred))
+
 def binary_crossentropy(y_true, y_pred):
     y_pred = T.clip(y_pred, epsilon, 1.0 - epsilon)
     bce = T.nnet.binary_crossentropy(y_pred, y_true)
     return bce
+
+def cosine(y_true, y_pred):
+    return T.neg(T.batched_dot(y_true,y_pred)/(T.norm(y_true)*T.norm(y_pred))
 
 # aliases
 mse = MSE = mean_squared_error
 mae = MAE = mean_absolute_error
 mape = MAPE = mean_absolute_percentage_error
 msle = MSLE = mean_squared_logarithmic_error
+sequencedot = sequence_vector
+cosim = cosine
 
 from .utils.generic_utils import get_from_module
 def get(identifier):
