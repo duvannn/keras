@@ -41,10 +41,10 @@ def binary_crossentropy(y_true, y_pred):
     bce = T.nnet.binary_crossentropy(y_pred, y_true)
     return bce
 
-    def cosine_similarity(y_true,y_pred):
-        mod_y = T.sqrt(T.sum(T.sqr(y_true), 1))
-        mod_y_pred = T.sqrt(T.sum(T.sqr(y_pred), 1))
-        return (- T.sum(T.batched_dot(y_true, y_pred))/(mod_y*mod_y_pred + epsilon)).mean()
+def cosine_similarity(y_true,y_pred):
+    mod_y = T.sqrt(T.sum(T.sqr(y_true), 1))
+    mod_y_pred = T.sqrt(T.sum(T.sqr(y_pred), 1))
+    return (- T.sum(T.batched_dot(y_true, y_pred))/(mod_y*mod_y_pred + epsilon)).mean()
 
 # aliases
 mse = MSE = mean_squared_error
