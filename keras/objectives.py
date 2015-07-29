@@ -42,7 +42,7 @@ def binary_crossentropy(y_true, y_pred):
     return bce
 
 def cosine(y_true, y_pred):
-    return T.neg(T.batched_dot(y_true,y_pred)/(T.norm(y_true)*T.norm(y_pred))
+    return T.neg(T.batched_dot(y_true,y_pred))/(T.norm(y_true)*T.norm(y_pred))
 
 # aliases
 mse = MSE = mean_squared_error
